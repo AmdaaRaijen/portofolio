@@ -23,6 +23,70 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@keyframes glitch-1 {
+  0%,
+  90% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  92% {
+    transform: translate(-8px, 3px);
+    opacity: 0.8;
+  }
+  94% {
+    transform: translate(6px, -4px);
+    opacity: 0.8;
+  }
+  96% {
+    transform: translate(-5px, 2px);
+    opacity: 0.8;
+  }
+  98% {
+    transform: translate(7px, -3px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  90% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  92% {
+    transform: translate(7px, -4px);
+    opacity: 0.8;
+  }
+  94% {
+    transform: translate(-6px, 5px);
+    opacity: 0.8;
+  }
+  96% {
+    transform: translate(8px, -2px);
+    opacity: 0.8;
+  }
+  98% {
+    transform: translate(-5px, 4px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
 @keyframes twinkle {
   0%,
   100% {

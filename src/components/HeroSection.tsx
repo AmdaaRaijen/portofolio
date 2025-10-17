@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Stars from "./Stars";
 import generateStars from "@/utils/generateStats";
+import GlitchText from "./GlitchText";
 
 export default function HeroSection() {
   const stars = generateStars(50);
@@ -21,7 +22,7 @@ export default function HeroSection() {
       </div>
 
       {/* Glow Effect */}
-      <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.4),transparent_70%)] blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/2 md:left-1/4 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.4),transparent_70%)] blur-3xl animate-pulse" />
 
       <section className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-12 w-full max-w-6xl">
         <div className="absolute -top-40 right-96 hidden md:block">
@@ -42,17 +43,22 @@ export default function HeroSection() {
             alt="My Photo"
             width={320}
             height={320}
-            className="relative rounded-full object-cover border-4 border-purple/30 shadow-lg shadow-purple/20"
+            className="relative rounded-full object-cover border-4 border-purple/30 shadow-lg shadow-purple/20 w-52 h-52 md:w-80 md:h-80"
           />
+        </div>
+
+        <div className="block md:hidden">
+          <p className="text-white text-center ">
+            hello! I'm <span className="text-purple">Bintang Triadmaja</span>
+          </p>
         </div>
 
         {/* Profile Text */}
         <div className="text-center sm:text-left text-white max-w-2xl space-y-6">
           <h1 className="text-5xl sm:text-7xl font-bold leading-tight">
-            Web Developer <br />{" "}
-            <span className="text-purple">Security Analyst</span>
+            Web Developer <br /> <GlitchText>Security Analyst</GlitchText>
           </h1>
-          <p className="text-lg text-purple-soft">
+          <p className="text-lg text-purple-soft text-center md:text-left">
             I build secure, scalable, and elegant web applications with modern
             technologies. Experienced in full-stack web development for over 2
             years.
