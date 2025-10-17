@@ -1,8 +1,19 @@
 @import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@theme {
+  /* 🎨 Palet warna hasil analisa dari fotomu */
+  --color-dark: #020101;
+  --color-purple: #874db1;
+  --color-purple-light: #b37cc6;
+  --color-purple-soft: #d7b6d6;
+  --color-purple-deep: #4f375b;
+  --color-shadow: #1e1611;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020101;
+  --foreground: #020101;
 }
 
 @theme inline {
@@ -12,11 +23,40 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: blur(0px);
   }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: blur(1px);
+  }
+}
+
+/* Bintang layer 1 (lebih banyak, kecil) */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.3;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Bintang layer 2 (lebih besar dan jarang) */
+.stars2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(white 1.5px, transparent 1.5px);
+  background-size: 6px 6px;
+  opacity: 0.2;
+  animation: twinkle 5s ease-in-out infinite alternate;
 }
 
 body {
