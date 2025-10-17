@@ -4,10 +4,10 @@ import generateStars from "@/utils/generateStats";
 import GlitchText from "./GlitchText";
 
 export default function HeroSection() {
-  const stars = generateStars(50);
+  const stars = generateStars(10);
 
   return (
-    <main className="relative flex items-center justify-center min-h-screen w-full overflow-hidden bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 p-8 sm:p-20">
+    <main className="relative flex items-center justify-center min-h-screen w-full overflow-hidden bg-gradient-to-b from-dark via-shadow to-dark p-8 sm:p-20">
       <div className="absolute inset-0 overflow-hidden">
         {stars.map((star) => (
           <Stars
@@ -58,7 +58,7 @@ export default function HeroSection() {
           <h1 className="text-5xl sm:text-7xl font-bold leading-tight">
             Web Developer <br /> <GlitchText>Security Analyst</GlitchText>
           </h1>
-          <p className="text-lg text-purple-soft text-center md:text-left">
+          <p className="text-lg text-white text-center md:text-left">
             I build secure, scalable, and elegant web applications with modern
             technologies. Experienced in full-stack web development for over 2
             years.

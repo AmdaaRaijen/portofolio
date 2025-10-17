@@ -8,7 +8,7 @@ export const GlitchText = ({ children }: { children: string }) => {
 
       {/* Layer glitch 1 */}
       <span
-        className="absolute top-0 left-0 text-purple-500 animate-glitch-1 blur-[1px] "
+        className="absolute top-0 left-0 text-purple animate-glitch-1 blur-[1px] "
         aria-hidden="true"
         style={{
           animationDelay: `${0.55 + Math.random()}s`,
