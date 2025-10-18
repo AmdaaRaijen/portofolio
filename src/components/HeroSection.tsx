@@ -2,6 +2,8 @@ import Image from "next/image";
 import Stars from "./Stars";
 import generateStars from "@/utils/generateStats";
 import GlitchText from "./GlitchText";
+import Button from "./Button";
+import Link from "next/link";
 
 export default function HeroSection() {
   const stars = generateStars(10);
@@ -64,12 +66,11 @@ export default function HeroSection() {
             years.
           </p>
           <div className="flex gap-4 justify-center sm:justify-start">
-            <button className="px-6 py-3 bg-purple hover:bg-purple-light text-white font-semibold rounded-full shadow-lg shadow-purple/30 transition">
-              Contact Me
-            </button>
-            <button className="px-6 py-3 border border-purple-soft hover:border-purple text-purple-soft hover:text-white rounded-full transition">
-              View Projects
-            </button>
+            <Button>Contact Me</Button>
+
+            <Link href="#projects">
+              <Button isOutlined>View Projects</Button>
+            </Link>
           </div>
         </div>
       </section>

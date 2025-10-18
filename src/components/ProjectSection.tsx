@@ -3,6 +3,7 @@ import React from "react";
 import Stars from "./Stars";
 import ProjectCard from "./ProjectCard";
 import { ProjectType } from "@/types/Project";
+import Button from "./Button";
 
 const projects: ProjectType[] = [
   {
@@ -38,7 +39,10 @@ export default function ProjectSection() {
   const stars = generateStars(30);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-dark via-shadow to-dark p-8 sm:p-20">
+    <section
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-dark via-shadow to-dark p-8 sm:p-20"
+      id="projects"
+    >
       <div className="absolute inset-0 overflow-hidden">
         {stars.map((star) => (
           <Stars
@@ -78,9 +82,7 @@ export default function ProjectSection() {
 
         {/* View All Button */}
         <div className="flex justify-center pt-8">
-          <button className="px-8 py-4 bg-purple hover:bg-purple-light text-white font-semibold rounded-full shadow-lg shadow-purple/30 transition-all hover:scale-105">
-            View All Projects
-          </button>
+          <Button>View All Projects</Button>
         </div>
       </div>
     </section>
