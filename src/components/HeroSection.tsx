@@ -6,23 +6,8 @@ import Button from "./Button";
 import Link from "next/link";
 
 export default function HeroSection() {
-  const stars = generateStars(10);
-
   return (
-    <main className="relative flex items-center justify-center min-h-screen w-full overflow-hidden bg-gradient-to-b from-dark via-shadow to-dark p-8 sm:p-20">
-      <div className="absolute inset-0 overflow-hidden">
-        {stars.map((star) => (
-          <Stars
-            key={star.id}
-            delay={star.delay}
-            size={star.size}
-            opacity={star.opacity}
-            top={star.top}
-            left={star.left}
-          />
-        ))}
-      </div>
-
+    <main className="relative flex items-center justify-center min-h-screen w-full overflow-hidden  sm:p-20">
       {/* Glow Effect */}
       <div className="absolute bottom-1/2 md:left-1/4 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.4),transparent_70%)] blur-3xl animate-pulse" />
 

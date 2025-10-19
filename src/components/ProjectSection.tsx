@@ -40,10 +40,10 @@ export default function ProjectSection() {
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-dark via-shadow to-dark p-8 sm:p-20"
+      className="relative min-h-screen w-full overflow-hidden p-8 sm:p-20"
       id="projects"
     >
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         {stars.map((star) => (
           <Stars
             key={star.id}
@@ -54,7 +54,7 @@ export default function ProjectSection() {
             left={star.left}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Glow Effects */}
       <div className="absolute right-1/4 top-1/3 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.3),transparent_70%)] blur-3xl animate-pulse" />
