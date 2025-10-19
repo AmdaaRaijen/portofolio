@@ -10,8 +10,10 @@ import Stars from "./Stars";
 export default function ParallaxLayout() {
   const stars = generateStars(25);
 
+  const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
+
   return (
-    <Parallax pages={1.5} className="no-scrollbar">
+    <Parallax pages={isMobile ? 2.2 : 1.5} className="no-scrollbar">
       <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
         <div className="absolute inset-0 overflow-hidden">
@@ -30,7 +32,7 @@ export default function ParallaxLayout() {
           className="
       absolute pointer-events-none select-none 
       rotate-90 -left-5/12
-      blur-[0.5px] 
+      blur-[0.5px]
       brightness-[0.4]
       contrast-[1.2]
       drop-shadow-[0px_0px_200px_rgba(255,255,255,0.15)]    "

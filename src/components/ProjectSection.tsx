@@ -1,6 +1,4 @@
-import generateStars from "@/utils/generateStats";
 import React from "react";
-import Stars from "./Stars";
 import ProjectCard from "./ProjectCard";
 import { ProjectType } from "@/types/Project";
 import Button from "./Button";
@@ -36,26 +34,11 @@ const projects: ProjectType[] = [
 ];
 
 export default function ProjectSection() {
-  const stars = generateStars(30);
-
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden p-8 sm:p-20"
+      className="relative min-h-screen w-full overflow-hidden p-8 sm:p-20 mt-28 md:mt-0"
       id="projects"
     >
-      {/* <div className="absolute inset-0 overflow-hidden">
-        {stars.map((star) => (
-          <Stars
-            key={star.id}
-            delay={star.delay}
-            size={star.size}
-            opacity={star.opacity}
-            top={star.top}
-            left={star.left}
-          />
-        ))}
-      </div> */}
-
       {/* Glow Effects */}
       <div className="absolute right-1/4 top-1/3 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.3),transparent_70%)] blur-3xl animate-pulse" />
       <div className="absolute left-1/4 bottom-1/3 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.2),transparent_70%)] blur-3xl animate-pulse" />
