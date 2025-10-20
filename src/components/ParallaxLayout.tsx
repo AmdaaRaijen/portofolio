@@ -6,6 +6,7 @@ import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
 import generateStars from "@/utils/generateStats";
 import Stars from "./Stars";
+import ContactSection from "./ContactSection";
 
 export default function ParallaxLayout() {
   const stars = generateStars(25);
@@ -13,7 +14,7 @@ export default function ParallaxLayout() {
   const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
 
   return (
-    <Parallax pages={isMobile ? 2.2 : 1.5} className="no-scrollbar">
+    <Parallax pages={isMobile ? 2.2 : 2} className="no-scrollbar">
       <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
         <div className="absolute inset-0 overflow-hidden">
@@ -45,6 +46,10 @@ export default function ParallaxLayout() {
 
       <ParallaxLayer offset={0.9} speed={1}>
         <ProjectSection />
+      </ParallaxLayer>
+
+      <ParallaxLayer offset={1} speed={1}>
+        <ContactSection />
       </ParallaxLayer>
     </Parallax>
   );
