@@ -7,14 +7,21 @@ import ProjectSection from "./ProjectSection";
 import generateStars from "@/utils/generateStats";
 import Stars from "./Stars";
 import ContactSection from "./ContactSection";
+import { useRef } from "react";
 
 export default function ParallaxLayout() {
+  const parallaxRef = useRef<any>(null);
+
   const stars = generateStars(25);
 
   const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
 
   return (
-    <Parallax pages={isMobile ? 3 : 2} className="no-scrollbar">
+    <Parallax
+      pages={isMobile ? 3 : 2}
+      className="no-scrollbar"
+      ref={parallaxRef}
+    >
       <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
         <div className="absolute inset-0 overflow-hidden">
@@ -41,7 +48,10 @@ export default function ParallaxLayout() {
       </ParallaxLayer>
 
       <ParallaxLayer speed={1}>
-        <HeroSection />
+        <HeroSection
+          onScrollToContact={() => parallaxRef.current?.scrollTo(0.9)}
+          onScrollToProjects={() => parallaxRef.current?.scrollTo(0.5)}
+        />
       </ParallaxLayer>
 
       <ParallaxLayer offset={0.9} speed={1}>

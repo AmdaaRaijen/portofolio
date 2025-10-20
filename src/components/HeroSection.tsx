@@ -1,11 +1,17 @@
 import Image from "next/image";
-import Stars from "./Stars";
-import generateStars from "@/utils/generateStats";
 import GlitchText from "./GlitchText";
 import Button from "./Button";
 import Link from "next/link";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onScrollToProjects: () => void;
+  onScrollToContact: () => void;
+}
+
+export default function HeroSection({
+  onScrollToProjects,
+  onScrollToContact,
+}: HeroSectionProps) {
   return (
     <main className="relative flex items-center justify-center min-h-screen w-full overflow-hidden sm:p-20 pt-5 md:pt-0">
       {/* Glow Effect */}
@@ -51,11 +57,11 @@ export default function HeroSection() {
             years.
           </p>
           <div className="flex gap-4 justify-center sm:justify-start">
-            <Button>Contact Me</Button>
+            <Button onClick={onScrollToContact}>Contact Me</Button>
 
-            <Link href="#projects">
-              <Button isOutlined>View Projects</Button>
-            </Link>
+            <Button isOutlined onClick={onScrollToProjects}>
+              View Projects
+            </Button>
           </div>
         </div>
       </section>
