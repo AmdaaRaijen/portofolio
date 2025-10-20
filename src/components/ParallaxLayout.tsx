@@ -51,12 +51,12 @@ export default function ParallaxLayout() {
           width={1280}
           height={1280}
           className="
-      absolute pointer-events-none select-none 
+      absolute pointer-events-none select-none
       rotate-90 -left-5/12
       blur-[0.5px]
       brightness-[0.4]
       contrast-[1.2]
-      drop-shadow-[0px_0px_200px_rgba(255,255,255,0.15)]    "
+      drop-shadow-[0px_0px_200px_rgba(255,255,255,0.15)]"
         />
       </ParallaxLayer>
 
