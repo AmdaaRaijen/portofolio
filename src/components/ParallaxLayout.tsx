@@ -14,7 +14,7 @@ export default function ParallaxLayout() {
   const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
 
   return (
-    <Parallax pages={isMobile ? 2.2 : 2} className="no-scrollbar">
+    <Parallax pages={isMobile ? 3 : 2} className="no-scrollbar">
       <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
         <div className="absolute inset-0 overflow-hidden">
@@ -48,7 +48,7 @@ export default function ParallaxLayout() {
         <ProjectSection />
       </ParallaxLayer>
 
-      <ParallaxLayer offset={1} speed={1}>
+      <ParallaxLayer offset={isMobile ? 1.99999 : 1} speed={1}>
         <ContactSection />
       </ParallaxLayer>
     </Parallax>

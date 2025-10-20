@@ -53,7 +53,10 @@ const contacts: ContactItem[] = [
 
 export default function ContactSection() {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center p-8 sm:p-20">
+    <section
+      className="relative min-h-screen w-full flex items-center justify-center p-8 sm:p-20 mt-96 md:mt-0"
+      id="contact"
+    >
       {/* Glow Effects */}
       <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(135,77,177,0.3),transparent_70%)] blur-3xl animate-pulse" />
 

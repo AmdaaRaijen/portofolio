@@ -42,7 +42,7 @@ export default function HeroSection() {
 
         {/* Profile Text */}
         <div className="text-center sm:text-left text-white max-w-2xl space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-[2.8rem] md:text-7xl font-bold leading-tight">
             Web Developer <br /> <GlitchText>Security Analyst</GlitchText>
           </h1>
           <p className="text-lg text-white text-center md:text-left">
