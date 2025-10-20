@@ -19,7 +19,8 @@ export default function HeroSection({
       <section className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-6xl">
         <div className="absolute -top-40 right-96 hidden md:block">
           <p className="text-white">
-            hello! I'm <span className="text-purple">Bintang Triadmaja</span>
+            hello! I{"'"}m{" "}
+            <span className="text-purple">Bintang Triadmaja</span>
           </p>
         </div>
 
@@ -41,7 +42,8 @@ export default function HeroSection({
 
         <div className="block md:hidden">
           <p className="text-white text-center ">
-            hello! I'm <span className="text-purple">Bintang Triadmaja</span>
+            hello! I{"'"}m{" "}
+            <span className="text-purple">Bintang Triadmaja</span>
           </p>
         </div>
 

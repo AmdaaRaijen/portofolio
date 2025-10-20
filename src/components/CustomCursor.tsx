@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
 
 export default function CustomCursor() {
