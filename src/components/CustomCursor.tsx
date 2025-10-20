@@ -1,8 +1,18 @@
 "use client";
 
+import { use, useEffect, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
 
 export default function CustomCursor() {
+  const [showCursor, setShowCursor] = useState(false);
+
+  useEffect(() => {
+    const isMouseDevice = window.matchMedia("(pointer: fine)").matches;
+    setShowCursor(isMouseDevice);
+  }, []);
+
+  if (!showCursor) return null;
+
   return (
     <AnimatedCursor
       innerSize={0}
