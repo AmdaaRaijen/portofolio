@@ -1,7 +1,6 @@
 import Image from "next/image";
 import GlitchText from "./GlitchText";
 import Button from "./Button";
-import Link from "next/link";
 
 interface HeroSectionProps {
   onScrollToProjects: () => void;

@@ -16,13 +16,38 @@ export default function ParallaxLayout() {
 
   const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
 
+  const isMiniMobile =
+    typeof window !== "undefined" && window.innerHeight < 720;
+
+  if (typeof window !== "undefined") {
+    console.log(
+      "isMobile:",
+      isMobile,
+      "isMiniMobile:",
+      isMiniMobile,
+      window.innerHeight
+    );
+  }
+
+  const pages = isMiniMobile ? 3.2 : isMobile ? 3 : 2;
+
+  const projectSectionOffset = 0.9;
+
+  const contactSectionOffset = isMiniMobile || isMobile ? 1.9 : 1;
+
+  const scrollToProjects = () => {
+    parallaxRef.current?.scrollTo(projectSectionOffset);
+  };
+
+  const scrollToContact = () => {
+    parallaxRef.current?.scrollTo(contactSectionOffset);
+  };
+
   return (
-    <Parallax
-      pages={isMobile ? 3 : 2}
-      className="no-scrollbar"
-      ref={parallaxRef}
-    >
+    <Parallax pages={pages} className="no-scrollbar" ref={parallaxRef}>
       <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
+        {isMobile && <p className="text-white text-4xl blur-sm">MOBILE</p>}
+        {isMiniMobile && <p className="text-white text-4xl blur-sm">MINI</p>}
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
         <div className="absolute inset-0 overflow-hidden">
           {stars.map((star) => (
@@ -49,16 +74,22 @@ export default function ParallaxLayout() {
 
       <ParallaxLayer speed={1}>
         <HeroSection
-          onScrollToContact={() => parallaxRef.current?.scrollTo(0.9)}
-          onScrollToProjects={() => parallaxRef.current?.scrollTo(0.5)}
+          onScrollToContact={scrollToContact}
+          onScrollToProjects={scrollToProjects}
         />
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0.9} speed={1}>
+      <ParallaxLayer offset={projectSectionOffset} speed={1}>
         <ProjectSection />
       </ParallaxLayer>
 
-      <ParallaxLayer offset={isMobile ? 1.99999 : 1} speed={1}>
+      <ParallaxLayer
+        offset={contactSectionOffset}
+        speed={1}
+        style={{
+          marginTop: isMiniMobile ? "18rem" : "0rem",
+        }}
+      >
         <ContactSection />
       </ParallaxLayer>
     </Parallax>
