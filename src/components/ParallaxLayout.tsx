@@ -8,10 +8,10 @@ import generateStars from "@/utils/generateStats";
 import Stars from "./Stars";
 import ContactSection from "./ContactSection";
 import { useRef } from "react";
-import type { Parallax as ParallaxType } from "@react-spring/parallax";
 
 export default function ParallaxLayout() {
-  const parallaxRef = useRef<typeof ParallaxType | null>(null);
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const parallaxRef = useRef<any>(null);
 
   const stars = generateStars(25);
 
