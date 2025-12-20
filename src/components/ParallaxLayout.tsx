@@ -35,11 +35,13 @@ export default function ParallaxLayout() {
 
   const isMobile = windowSize.width < 768;
 
-  const pages = isMobile ? 4 : 2.5;
+  const pages = isMobile ? 3 : 2.5;
 
   const heroOffset = 0;
   const projectOffset = isMobile ? 0.8 : 0.9;
   const contactOffset = isMobile ? 1.99 : 1;
+
+  const marginOffset = isMobile ? "mt-80" : "mt-0";
 
   const scrollToProjects = () => {
     parallaxRef.current?.scrollTo(projectOffset);
@@ -108,7 +110,7 @@ export default function ParallaxLayout() {
       <ParallaxLayer
         offset={contactOffset}
         speed={1}
-        className="flex items-center justify-center"
+        className={`flex items-center justify-center ${marginOffset}`}
       >
         <ContactSection />
       </ParallaxLayer>
