@@ -7,77 +7,108 @@ import ProjectSection from "./ProjectSection";
 import generateStars from "@/utils/generateStats";
 import Stars from "./Stars";
 import ContactSection from "./ContactSection";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function ParallaxLayout() {
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const parallaxRef = useRef<any>(null);
+
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const stars = generateStars(25);
 
-  const isMobile = typeof window !== "undefined" && window.innerHeight < 790;
+  const isMobile = windowSize.width < 768;
 
-  const isMiniMobile =
-    typeof window !== "undefined" && window.innerHeight < 720;
+  const pages = isMobile ? 4 : 2.5;
 
-  const pages = isMiniMobile ? 3.2 : isMobile ? 3 : 2;
-
-  const projectSectionOffset = 0.9;
-
-  const contactSectionOffset = isMiniMobile || isMobile ? 1.9 : 1;
+  const heroOffset = 0;
+  const projectOffset = isMobile ? 0.8 : 0.9;
+  const contactOffset = isMobile ? 1.99 : 1;
 
   const scrollToProjects = () => {
-    parallaxRef.current?.scrollTo(projectSectionOffset);
+    parallaxRef.current?.scrollTo(projectOffset);
   };
 
   const scrollToContact = () => {
-    parallaxRef.current?.scrollTo(contactSectionOffset);
+    parallaxRef.current?.scrollTo(contactOffset);
   };
+
+  if (!isMounted) return null;
 
   return (
     <Parallax pages={pages} className="no-scrollbar" ref={parallaxRef}>
-      <ParallaxLayer speed={0.05} factor={2.1} className="pointer-events-none">
+      {/* --- BACKGROUND LAYER --- */}
+      <ParallaxLayer
+        offset={0}
+        speed={0}
+        factor={pages}
+        className="pointer-events-none"
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-shadow to-dark" />
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden h-full">
           {stars.map((star) => (
             <Stars key={star.id} {...star} />
           ))}
         </div>
       </ParallaxLayer>
 
-      <ParallaxLayer speed={0.5}>
+      {/* --- MOON DECORATION --- */}
+      <ParallaxLayer speed={0.5} offset={0}>
         <Image
           src="/moon.webp"
           alt="Moon Background"
           width={1280}
           height={1280}
           className="
-      absolute pointer-events-none select-none
-      rotate-90 -left-5/12
-      blur-[0.5px]
-      brightness-[0.4]
-      contrast-[1.2]
-      drop-shadow-[0px_0px_200px_rgba(255,255,255,0.15)]"
+            absolute pointer-events-none select-none
+            rotate-90 -left-5/12
+            blur-[0.5px]
+            brightness-[0.4]
+            contrast-[1.2]
+            drop-shadow-[0px_0px_200px_rgba(255,255,255,0.15)]"
         />
       </ParallaxLayer>
 
-      <ParallaxLayer speed={1}>
+      {/* --- HERO SECTION --- */}
+      <ParallaxLayer offset={heroOffset} speed={1}>
         <HeroSection
           onScrollToContact={scrollToContact}
           onScrollToProjects={scrollToProjects}
         />
       </ParallaxLayer>
 
-      <ParallaxLayer offset={projectSectionOffset} speed={1}>
-        <ProjectSection />
+      {/* --- PROJECT SECTION --- */}
+      <ParallaxLayer
+        offset={projectOffset}
+        speed={1}
+        factor={isMobile ? 1.5 : 1}
+      >
+        <div className="w-full flex justify-center items-center">
+          <ProjectSection />
+        </div>
       </ParallaxLayer>
 
+      {/* --- CONTACT SECTION --- */}
       <ParallaxLayer
-        offset={contactSectionOffset}
+        offset={contactOffset}
         speed={1}
-        style={{
-          marginTop: isMiniMobile ? "18rem" : "0rem",
-        }}
+        className="flex items-center justify-center"
       >
         <ContactSection />
       </ParallaxLayer>
